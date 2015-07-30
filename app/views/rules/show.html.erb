@@ -1,0 +1,29 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Name:</strong>
+  <%= @rule.name %>
+</p>
+
+<p>
+  <strong>Product number:</strong>
+  <%= @rule.product_number %>
+</p>
+
+<p>
+  <strong>Product:</strong>
+  <%= @rule.product %>
+</p>
+
+<p>
+  <strong>Value:</strong>
+  <%= @rule.value %>
+</p>
+
+<p>
+  <strong>Measurment:</strong>
+  <%= @rule.measurment %>
+</p>
+
+<%= link_to 'Edit', edit_rule_path(@rule) %> |
+<%= link_to 'Back', rules_path %>
