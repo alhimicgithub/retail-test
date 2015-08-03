@@ -4,6 +4,7 @@ class Rule < ActiveRecord::Base
     'times to': ->{|orign, value| orign - value}],
     'times by': ->{|orign, value| orign*value}]
   }
+  CONDITIONS = ["<=", ">=", "=", ">", "<"]
   belongs_to :product
 
   def get_discount
