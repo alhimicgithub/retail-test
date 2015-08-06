@@ -21,12 +21,6 @@ $ ->
   $(document).on('ajax:success', '.unscan_link', (e, data, status, xhr) ->
     e.currentTarget.parentNode.remove()
     update_checkout_total data
-    console.log(e)
-    console.log(data)
-    console.log(status)
-    console.log(xhr)
   ).on("ajax:error",  '.unscan_link', (e, data, status, xhr) ->
-    console.log(status)
-    console.log(data)
 #    $("#new_checkout_product").render_form_errors('scan', data.responseJSON)
   )  
