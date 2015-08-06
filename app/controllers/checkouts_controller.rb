@@ -1,5 +1,5 @@
 class CheckoutsController < ApplicationController
-  before_action :set_checkout, only: [:show, :edit, :update, :destroy, :scan]
+  before_action :set_checkout, only: [:show, :edit, :update, :destroy, :scan, :unscan]
 
   # GET /checkouts
   # GET /checkouts.json
@@ -21,12 +21,11 @@ class CheckoutsController < ApplicationController
   def edit
   end
 
-  # PUT /checkouts/1/scan
+  # POST /checkouts/1/scan
   def scan
     @scan = @checkout.scans.build
     @scan.value = params[:checkout_product][:value]
     @scan.product = Product.find(params[:checkout_product][:product_id])
-
     respond_to do |format|
       if @scan.save
         format.json { render :scan, status: :created}
@@ -34,6 +33,18 @@ class CheckoutsController < ApplicationController
         format.json { render json: @scan.errors, status: :unprocessable_entity }
       end
     end
+  end
+
+  # DELETE /checkouts/1/unscan
+  def unscan
+    @scan = CheckoutProduct.find(params[:checkout_product_id])
+    respond_to do |format|
+      if @scan.destroy
+        format.json {render :scan, status: :created}
+      else
+        format.json { render json: @scan.errors, status: :unprocessable_entity }
+      end  
+    end    
   end
 
   # POST /checkouts

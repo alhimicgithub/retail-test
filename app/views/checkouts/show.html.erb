@@ -8,7 +8,7 @@
 Scans:
 <ul id="scans">
   <% @checkout.scans.each do |scan| %>
-    <li><%= scan.value %> <%= scan.product.code %> (<%= scan.product.price %>)</li>
+    <li><%= scan.value %> <%= scan.product.code %> (<%= scan.product.price %>) <%= link_to 'Remove', unscan_checkout_path({checkout_product_id: scan.id}), remote: true, method: :delete, class: 'unscan_link' %></li>
   <% end %>
 </ul>
 
@@ -17,8 +17,11 @@ Scans:
 	<%= render partial: 'scan_form'%>
 </div>
 
-Total:
-<span id="checkout_total"><%= @checkout.total%></span>	
-
+Original Total:
+<span id="checkout_original_total"><%= @checkout.total%></span>	
+<br />
+Total Cost:
+<span id="checkout_total_cost"><%= @checkout.total%></span>	(Using rules: <%= @checkout.rules.pluck(:name).join(", ")%>)
+<br />
 <%= link_to 'Edit', edit_checkout_path(@checkout) %> |
 <%= link_to 'Back', checkouts_path %>
