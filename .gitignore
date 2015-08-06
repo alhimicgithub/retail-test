@@ -13,4 +13,5 @@
 /tmp
 /vendor/*
 /public/assets/*
-setenv.sh
+./setenv.sh
+/db/schema.rb

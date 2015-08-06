@@ -1,8 +1,8 @@
 class Rule < ActiveRecord::Base
   MEASURMENTS = {
-    '%': ->{|orign, value| orign*value/100.0}],
-    'times to': ->{|orign, value| orign - value}],
-    'times by': ->{|orign, value| orign*value}]
+    '%' => ->(orign, value) {orign*value/100.0},
+    'times to' => ->(orign, value) {orign - value},
+    'times by' => ->(orign, value) {orign*value}
   }
   CONDITIONS = ["<=", ">=", "=", ">", "<"]
   belongs_to :product
