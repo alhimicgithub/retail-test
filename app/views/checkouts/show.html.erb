@@ -5,5 +5,20 @@
   <%= @checkout.number %>
 </p>
 
+Scans:
+<ul id="scans">
+  <% @checkout.scans.each do |scan| %>
+    <li><%= scan.value %> <%= scan.product.code %> (<%= scan.product.price %>)</li>
+  <% end %>
+</ul>
+
+
+<div id='scan_form'>
+	<%= render partial: 'scan_form'%>
+</div>
+
+Total:
+<span id="checkout_total"><%= @checkout.total%></span>	
+
 <%= link_to 'Edit', edit_checkout_path(@checkout) %> |
 <%= link_to 'Back', checkouts_path %>

@@ -2,8 +2,9 @@ class Checkout < ActiveRecord::Base
 	attr_reader :total_price, :oroginal_price
 
 	has_many :rules
-	has_many :products, :through => CheckoutProduct
-	has_many :rules, :through => CheckoutRule
+	has_many :scans, class_name: CheckoutProduct 
+	has_many :checkout_rules
+	has_many :rules, through: :checkout_rules
 
 	before_save :set_number
 
@@ -21,10 +22,18 @@ class Checkout < ActiveRecord::Base
   #   @total_price = total
   # end
 
-  # def total
-  #   visitor = CheckoutVisitor.new(self)
+  def total
+    original_total
+    # visitor = CheckoutVisitor.new(self)
     
-  # end
+  end
+
+  def original_total
+    scans.joins(:product)
+      .select("product_id, price, sum(value) as sum_value")
+      .group(:product_id, :price)
+      .inject(0){|sum, obj| sum += obj.sum_value*obj.price}
+  end  
 
   private
 

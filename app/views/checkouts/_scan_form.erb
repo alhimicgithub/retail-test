@@ -1,0 +1,17 @@
+<%= form_for @checkout.scans.build, url: {action: :scan}, remote: true do |f| %>
+  <% if @checkout.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@checkout.errors.count, "error") %> prohibited this checkout from being saved:</h2>
+
+      <ul>
+      <% @checkout.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :value, 'Scan Product' %><%= f.text_field :value, size: 4 %>  <%= f.collection_select(:product_id, Product.all, :id, :name)%> <%= f.submit 'Scan' %>
+  </div>
+<% end %>

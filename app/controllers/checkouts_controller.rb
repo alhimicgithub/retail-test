@@ -23,15 +23,15 @@ class CheckoutsController < ApplicationController
 
   # PUT /checkouts/1/scan
   def scan
-    checkout_product = @checkout.build(:checkout_product)
-    checkout_product.value = params[:checkout][:product][:value]
-    checkout_product.product = Product.find(params[:checkout][:product][:id])
+    @scan = @checkout.scans.build
+    @scan.value = params[:checkout_product][:value]
+    @scan.product = Product.find(params[:checkout_product][:product_id])
 
     respond_to do |format|
-      if checkout_product.save
-        format.json { render :show, status: :created, location: @checkout }
+      if @scan.save
+        format.json { render :scan, status: :created}
       else
-        format.json { render json: @checkout.errors, status: :unprocessable_entity }
+        format.json { render json: @scan.errors, status: :unprocessable_entity }
       end
     end
   end
