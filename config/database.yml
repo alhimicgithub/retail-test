@@ -23,7 +23,7 @@ default: &default
 
 development:
   <<: *default
-  database: test1_test
+  database: test1_dev
 
   # The specified database role being used to connect to postgres.
   # To create additional roles in postgres see `$ createuser --help`.
@@ -86,7 +86,7 @@ test:
 #
 production:
   <<: *default
-  database: test1_test
+  database: test1_prod
   host: localhost
   username: test1_test
   password: test1_pass
