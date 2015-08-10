@@ -86,6 +86,11 @@ test:
 #
 production:
   <<: *default
-  database: retail_test_production
-  username: retail_test
-  password: <%= ENV['RETAIL_TEST_DATABASE_PASSWORD'] %>
+  database: test1_test
+  host: localhost
+  username: test1_test
+  password: test1_pass
+
+#  database: retail_test_production
+#  username: retail_test
+#  password: <%= ENV['RETAIL_TEST_DATABASE_PASSWORD'] %>

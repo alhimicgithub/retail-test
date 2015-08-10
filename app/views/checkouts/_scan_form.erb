@@ -1,4 +1,4 @@
-<%= form_for @checkout.scans.build, url: {action: :scan}, remote: true do |f| %>
+<%= form_for @checkout.scans.build, url: {action: :scan}, :html=>{:method => "PUT"}, remote: true  do |f| %>
   <div id="error_explanation" style='display: none;'></div>
   <div class="field">
     <%= f.label :value, 'Scan Product' %><%= f.text_field :value, size: 4 %>  <%= f.collection_select(:product_id, Product.all, :id, :name)%> <%= f.submit 'Scan' %>

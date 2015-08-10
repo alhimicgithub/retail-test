@@ -1,7 +1,7 @@
 Rails.application.routes.draw do
   resources :checkouts do
     member do
-      post :scan
+      put :scan
       delete :unscan
     end  
   end  
