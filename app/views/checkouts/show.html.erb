@@ -21,7 +21,7 @@ Original Total:
 <span id="checkout_original_total"><%= @checkout.total%></span>	
 <br />
 Total Cost:
-<span id="checkout_total_cost"><%= @checkout.total%></span>	(Using rules: <%= @checkout.rules.pluck(:name).join(", ")%>)
+<span id="checkout_total_cost"><%= @checkout.total%></span>
 <br />
 <%= link_to 'Edit', edit_checkout_path(@checkout) %> |
 <%= link_to 'Back', checkouts_path %>

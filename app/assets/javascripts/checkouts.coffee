@@ -3,9 +3,10 @@
 # You can use CoffeeScript in this file: http://coffeescript.org/
 
 update_checkout_total = (data)->
-    $("#checkout_original_total").effect("highlight")
-    $("#checkout_original_total").html(data['total'])
-
+  $("#checkout_original_total").effect("highlight")
+  $("#checkout_original_total").html(data['original_total'])
+  $("#checkout_total_cost").effect("highlight")
+  $("#checkout_total_cost").html(data['total'])
 
 $ ->
   $(document).on('ajax:success', '#new_checkout_product', (e, data, status, xhr) ->

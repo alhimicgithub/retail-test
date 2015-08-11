@@ -4,7 +4,7 @@ class Rule < ActiveRecord::Base
     'times to' => Proc.new{|orign_price, value, product_number, product_amount| value*product_amount},
     'times by' => Proc.new{|orign_price, value, product_number, product_amount| ((product_amount/product_number).to_i*value)*orign_price}
   }
-  CONDITIONS = ["<=", ">=", "==", ">", "<"]
+  CONDITIONS = [">=", "==", ">"]
   
   belongs_to :product
 
